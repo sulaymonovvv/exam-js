@@ -82,13 +82,28 @@
         </button>
       </div>
       <ul class="flex justify-between items-center">
-        <li class="me-6 hover:text-[#ff000d]">
-          <a href="favorite.html"><i class="text-lg fa-solid fa-heart"></i></a>
+        <li class="me-6">
+          <a href="favorite.html"
+            ><i class="text-xl fa-solid fa-heart relative hover:text-blue-600"
+              ><span
+                id="favoriteBadge"
+                class="absolute -top-1 -right-2 w-5 h-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center hidden"
+              >
+                0
+              </span></i
+            ></a
+          >
         </li>
         <li class="me-6 hover:text-blue-600">
           <a href="purchase.html"
-            ><i class="text-lg fa-solid fa-cart-shopping"></i
-          ></a>
+            ><i class="text-xl fa-solid fa-cart-shopping relative">
+              <span
+                id="cartBadge"
+                class="absolute -top-1 -right-2 w-5 h-5 bg-red-600 text-white text-xs font-bold rounded-full flex items-center justify-center hidden"
+                >0</span
+              ></i
+            ></a
+          >
         </li>
         <li class="me-6 font-bold hover:text-blue-600">
           <a href="#"><i class="text-lg fa-solid fa-earth-europe"></i>RU</a>

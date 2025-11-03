@@ -274,3 +274,35 @@ document.addEventListener("DOMContentLoaded", () => {
   // Agar purchase sahifasi — cartni render qilamiz
   if (document.getElementById("cartRow")) renderCart();
 });
+
+function updateBadge(badgeId, storageKey) {
+  const badge = document.getElementById(badgeId);
+  if (!badge) return;
+
+  const items = JSON.parse(localStorage.getItem(storageKey)) || [];
+  const count = items.reduce((sum, item) => sum + (item.quantity || 1), 0);
+
+  if (count > 0) {
+    badge.textContent = count;
+    badge.classList.remove("hidden");
+  } else {
+    badge.classList.add("hidden");
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  updateBadge("cartBadge", "cart");
+  updateBadge("favoriteBadge", "favorites");
+});
+function addToCart(product) {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const existing = cart.find((item) => item.id === product.id);
+
+  if (existing) {
+    existing.quantity = (existing.quantity || 1) + 1;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateBadge("cartBadge", "cart");
+}
